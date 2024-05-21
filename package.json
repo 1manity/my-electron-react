@@ -3,7 +3,7 @@
   "version": "2.2.0",
   "main": "dist-electron/main/index.js",
   "description": "Electron Vite React boilerplate.",
-  "author": "草鞋没号 <308487730@qq.com>",
+  "author": "1manity",
   "license": "MIT",
   "private": true,
   "debug": {
@@ -20,7 +20,9 @@
     "e2e": "playwright test"
   },
   "dependencies": {
-    "electron-updater": "^6.1.8"
+    "dotenv": "^16.4.5",
+    "electron-updater": "^6.1.8",
+    "mongoose": "^8.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",
