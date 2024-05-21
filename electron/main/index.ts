@@ -5,7 +5,9 @@ import path from "node:path";
 import os from "node:os";
 import { update } from "./update";
 import "../../database/database.mjs";
+import { fork } from "child_process";
 
+let expressProcess: any;
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -83,7 +85,12 @@ async function createWindow() {
   update(win);
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  expressProcess = fork(path.join(__dirname, "../../database/server.mjs"), [], {
+    stdio: "inherit",
+  });
+  createWindow();
+});
 
 app.on("window-all-closed", () => {
   win = null;
