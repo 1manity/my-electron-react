@@ -1,11 +1,14 @@
 import express from "express";
 import path from "path";
+import taskRouter from "./api/task.mjs";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(process.env.APP_ROOT || "", "dist")));
+
+app.use("/api/tasks", taskRouter);
 
 app.get("/", (req, res) => {
   res.send("欢迎使用Express在Electron中构建后端！");
