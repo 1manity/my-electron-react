@@ -1,4 +1,4 @@
-import { TaskModel } from "../model.mjs";
+import { TaskModel } from "../model/task.mjs";
 
 // 创建任务
 export async function createTask(taskData) {
