@@ -1,3 +1,4 @@
+import { PORT } from "@/config/config";
 import axios, {
   AxiosInstance,
   InternalAxiosRequestConfig,
@@ -6,20 +7,20 @@ import axios, {
 
 // 创建 Axios 实例
 const instance: AxiosInstance = axios.create({
-  baseURL: "http://localhost:" + process.env.PORT,
-  timeout: 5000, // 请求超时时间
+  baseURL: "http://localhost:" + PORT + "/api",
+  timeout: 50000, // 请求超时时间
 });
 
 // 添加请求拦截器
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 在发送请求之前做些什么
-    console.log("Request Interceptor:", config);
+    // console.log("Request Interceptor:", config);
     return config;
   },
   (error) => {
     // 对请求错误做些什么
-    console.error("Request Error:", error);
+    // console.error("Request Error:", error);
     return Promise.reject(error);
   }
 );
@@ -28,7 +29,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
     // 对响应数据做点什么
-    console.log("Response Interceptor:", response);
+    // console.log("Response Interceptor:", response);
     return response;
   },
   (error) => {

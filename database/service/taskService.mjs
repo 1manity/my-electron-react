@@ -3,6 +3,7 @@ import { TaskModel } from "../model/task.mjs";
 // 创建任务
 export async function createTask(taskData) {
   try {
+    console.log(taskData);
     const task = await TaskModel.create(taskData);
     return task;
   } catch (error) {

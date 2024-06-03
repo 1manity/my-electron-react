@@ -1,10 +1,14 @@
 import express from "express";
 import path from "path";
 import taskRouter from "./api/task.mjs";
+import cors from "cors";
+import "./database.mjs";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+app.use(cors());
 // Serve static files from the dist directory
 app.use(express.static(path.join(process.env.APP_ROOT || "", "dist")));
 
